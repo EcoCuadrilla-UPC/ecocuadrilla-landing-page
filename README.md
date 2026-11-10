@@ -4,16 +4,16 @@ Landing y demo web en HTML, CSS y JavaScript. Sin instalación de paquetes ni co
 
 ## Ejecutar en Windows
 
-1. Abre la carpeta del proyecto en VS Code.
+1. Abre la carpeta del proyecto en WebStorm.
 2. En la terminal de esa carpeta ejecuta:
 
 ```powershell
-py -m http.server 5500
+py -m http.server 5500 --directory public
 ```
 
 3. Abre http://localhost:5500. También puedes usar Live Server.
 
-Es necesario un servidor local porque las pantallas se cargan desde `pages/`. No abras `index.html` directamente con `file://`.
+Es necesario un servidor local porque las pantallas se cargan desde `public/pages/`. No abras `public/index.html` directamente con `file://`.
 
 ## Diseño
 
@@ -27,11 +27,11 @@ Referencia: Figma `f0sIxBHt0DQPAVskX8MFOa`.
 
 ## Archivos
 
-- `index.html`: entrada.
-- `pages/`: secciones y pantallas originales convertidas a HTML.
-- `figma.css`: estilos de los componentes del diseño, ya compilados.
-- `styles.css`: tipografía local, contenedores y controles nativos.
-- `main.js`: interacción y datos de demostración compartidos por los tres roles.
+- `public/index.html`: entrada.
+- `public/pages/`: secciones y pantallas originales convertidas a HTML.
+- `public/figma.css`: estilos de los componentes del diseño, ya compilados.
+- `public/assets/styles/styles.css`: tipografía local, contenedores y controles nativos.
+- `public/assets/scripts/main.js`: interacción y datos de demostración compartidos por los tres roles.
 - `js/epp.js`: entrega, consulta, verificación y devolución de EPP.
 - `js/access.js`: credencial QR, ingresos y salidas, modo sin conexión y sincronización.
 - `qr.js`: genera el QR de demostración ECQ-0248.
@@ -39,8 +39,8 @@ Referencia: Figma `f0sIxBHt0DQPAVskX8MFOa`.
 - `features/`: escenarios de aceptación en Gherkin.
 - `docs/`: mapa de pantallas, historias y comprobaciones.
 
-Los módulos de `js/` se cargan antes que `main.js` y se registran en `window`,
-igual que `qr.js`. No leen variables globales: `main.js` les pasa el estado y los
+Los módulos de `js/` se cargan antes que `public/assets/scripts/main.js` y se registran en `window`,
+igual que `qr.js`. No leen variables globales: `public/assets/scripts/main.js` les pasa el estado y los
 ayudantes en un objeto `ctx`. Ver `docs/integracion.md`.
 
 ## Recorrido
