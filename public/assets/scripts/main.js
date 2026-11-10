@@ -88,7 +88,23 @@ function setupLanding(){
  for(const [label,role] of [['Probar como voluntario','volunteer'],['Probar como especialista','specialist'],['Probar como coordinador','coordinator']])labelButton(label,'role:'+role);
  const anchors={'Inicio':'hero','Para quién':'audience','Cómo funciona':'how','Funcionalidades':'functions','Preguntas':'faq','Preguntas frecuentes':'faq','Modo sin conexión':'offline','Video del producto':'videos','Video del equipo':'videos'};
  all('p').forEach(p=>{const label=p.textContent.trim();if(anchors[label]&&p.children.length===0&&!p.closest('.hero-visual')&&!p.closest('button'))bind(p,'anchor:'+anchors[label]);});
- all('[data-name^="Video ·"],[data-name="Reproducir"]').forEach(el=>bind(el,'video'));
+ const productCard = app.querySelector('[data-name="Video · About the Product"]');
+ const videoContainer = productCard?.querySelector('[data-name="Miniatura"]');
+
+ if (videoContainer) {
+   videoContainer.innerHTML = `
+     <iframe
+       src="https://www.youtube.com/embed/ugWBUt9CXgk"
+       title="EcoCuadrilla - About the Product"
+       loading="lazy"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+       allowfullscreen
+       style="display:block;width:100%;height:100%;border:0;">
+     </iframe>
+   `;
+ }
+
+ all('[data-name="Video · About the Team"]').forEach(el=>bind(el,'video'));
  all('[data-name="Pregunta"]').forEach(el=>bind(el,'faq'));
  all('[data-name="Icono/Menú"]').forEach(el=>bind(el,'mobile-menu'));
 }
